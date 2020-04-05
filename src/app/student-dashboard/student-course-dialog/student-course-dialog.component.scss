@@ -1,0 +1,95 @@
+:host .student-course {
+
+    .course-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: cadetblue;
+    }
+
+    ::ng-deep .ui-dialog-buttonpane  {
+        text-align: center;
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            text-transform: none;
+            min-width: 80px;
+        }
+    }
+
+    .course-details ::ng-deep .ui-table {
+        .ui-table-tbody > tr {
+
+            background: white;
+
+            td:nth-child(1), td:nth-child(3) {
+                width: 20%;
+                background: #dfd9d9;
+            }
+    
+            td:nth-child(2), td:nth-child(4) {
+                width: 30%;
+                background: #f4f4f4;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .sessions ::ng-deep .ui-table {
+        .ui-table-tbody > tr {
+
+
+            td:nth-child(1) {
+                width: 10%;
+                padding: 0.1em 0.857em;
+            }
+    
+            td:nth-child(2), td:nth-child(3), td:nth-child(4) {
+                width: 30%;
+                padding: 0.1em 0.857em;
+            }
+        }
+    }
+
+    ::ng-deep .ui-table {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        
+        .ui-table-thead > tr > th {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .ui-table-tbody > tr > td {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre;
+            padding: 0.3em 0.857em;
+        }
+
+        .ui-paginator-bottom {
+            border: none;
+        }
+
+        .btn {
+            padding: 5px;
+            border-radius: 50%;
+            margin: 5px;
+    
+            .material-icons {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        }
+
+        .status-panel .btn {
+            padding: 10px;
+            font-weight: bold;
+        }
+    }
+}

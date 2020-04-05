@@ -1,0 +1,30 @@
+<!-- <div class="main-content course-dashboard">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn-action mb-3" type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()"
+          label="Add"></button>
+        <p-table #dtPackage [columns]="cols" [value]="courses" [paginator]="true" [rows]="10" selectionMode="single"
+          [(selection)]="selectedCourse" (onRowSelect)="onCourseSelect($event)">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th class="header" *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+              <td>
+                
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div> -->

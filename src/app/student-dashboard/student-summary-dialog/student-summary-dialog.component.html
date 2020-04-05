@@ -1,0 +1,72 @@
+<p-dialog header="Summary" [(visible)]="visible" class="student-summary" [focusOnShow]="false"
+  [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '600px'}" [transitionOptions]="'0ms'"
+  [resizable]="false" [blockScroll]="true">
+  <form [formGroup]="studentForm">
+    <div class="row">
+      <div class="form-group col-4" *ngIf="student.code">
+        <label>Id</label>
+        <input type="text" class="form-control" pInputText [ngModel]="student.code" readonly [ngModelOptions]="{standalone: true}"/>
+      </div>
+      <div class="form-group col-8">
+        <label>Fullname</label>
+        <input formControlName="fullname" type="text" class="form-control" pInputText [(ngModel)]="student.fullname" autofocus />
+        <div *ngIf="f.fullname.dirty && f.fullname.errors" class="invalid-feedbacks">
+            <div *ngIf="f.fullname.errors.required">Fullname is required</div>
+            <div *ngIf="f.fullname.errors.minlength || f.fullname.errors.maxlength">Fullname must be 8-50 chars</div>
+        </div>
+      </div>
+      <div class="form-group col-4">
+        <label>Birthday</label>
+        <p-calendar formControlName="birthday" [(ngModel)]="student.birthday" appendTo='body'></p-calendar>
+        <div *ngIf="f.birthday.dirty && f.birthday.errors" class="invalid-feedbacks">
+          <div *ngIf="f.birthday.errors.required">Birthday is required</div>
+        </div>
+      </div>
+      <div class="form-group col-5">
+        <label>Phone</label>
+        <input formControlName="phone" pKeyFilter="pint" type="text" class="form-control" pInputText [(ngModel)]="student.phone" autofocus />
+        <div *ngIf="f.phone.dirty && f.phone.errors" class="invalid-feedbacks">
+          <div *ngIf="f.phone.errors.required">Phone is required</div>
+          <div *ngIf="f.phone.errors.maxlength">Phone must be less than 15 chars</div>
+        </div>
+      </div>
+      <div class="form-group col-3">
+        <label>Gender</label>
+        <p-dropdown formControlName="gender" [(ngModel)]="student.gender" [autoWidth]="false" [options]="genders" placeholder="Select">
+        </p-dropdown>
+        <div *ngIf="f.gender.dirty && f.gender.errors" class="invalid-feedbacks">
+          <div *ngIf="f.gender.errors.required">Gender is required</div>
+        </div>
+      </div>
+      <div class="form-group col-12">
+        <label>Email</label>
+        <input formControlName="email" type="text" class="form-control" pInputText [(ngModel)]="student.email" autofocus />
+        <div *ngIf="f.email.dirty && f.email.errors" class="invalid-feedbacks">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group col-12">
+        <label>Address</label>
+        <input formControlName="address" type="text" class="form-control" pInputText [(ngModel)]="student.address" autofocus />
+        <div *ngIf="f.address.dirty && f.address.errors" class="invalid-feedbacks">
+          <div *ngIf="f.address.errors.required">Address is required</div>
+          <div *ngIf="f.address.errors.maxlength">Address must be less than 100 chars</div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button *ngIf="!student.id" class="btn btn-info" (click)="add()" [disabled]="studentForm.invalid">
+        Create
+      </button>
+      <button *ngIf="student.id" class="btn btn-info" (click)="save()" [disabled]="studentForm.invalid">
+        Save
+      </button>
+      <button class="btn btn-info" (click)="visible = false">
+        Cancel
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>

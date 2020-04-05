@@ -1,0 +1,69 @@
+<p-dialog class="student-course" header="{{course.courseName}}" [(visible)]="visible" [focusOnShow]="false" [responsive]="true"
+  showEffect="fade" [modal]="true" [style]="{width: '650px', 'max-height': '500px'}" [transitionOptions]="'0ms'"
+  [resizable]="false" [blockScroll]="true">
+  <div class="row">
+    <!-- <div class="col-12 text-center course-name mb-3">
+      {{course.courseName}}
+    </div> -->
+    <div class="col-12 course-details">
+      <p-table [value]='[course]'>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr>
+            <td>Price</td>
+            <td>{{course.price}}k</td>
+            <td>First Check-in</td>
+            <td>{{firstCheckin}}</td>
+          </tr>
+          <tr>
+            <td>Periods</td>
+            <td>{{periods}}</td>
+            <td>Expire Date</td>
+            <td>{{expireDate}}</td>
+          </tr>
+          <tr>
+            <td>Register Date</td>
+            <td>{{registerDate}}</td>
+            <td>Remain Days</td>
+            <td>{{remainDays}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <!-- <div>Price: <b>{{course.price}}k</b></div>
+      <div>Periods: <b>{{periods}}</b></div>
+      <div>Register Date: <b>{{registerDate}}</b></div>
+      <div>First Check-in: <b>{{firstCheckin}}</b></div>
+      <div>Expire Date: <b>{{expireDate}}</b></div>
+      <div>Remain days: <b>{{remainDays}}</b></div> -->
+    </div>
+    <div class="col-12 sessions mt-3 mb-3">
+      <p-table #dtNotes [columns]="sessionCols" [value]="sessions" [paginator]="true" [rows]="10"
+        [scrollable]="true" scrollHeight="300px">
+        <ng-template pTemplate="header" let-columns>
+          <tr class="text-center">
+            <th class="header" *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+              {{col.header}}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+          <tr class="text-center">
+            <td>{{rowIndex + 1}}</td>
+            <td>{{rowData.date}}</td>
+            <td>{{rowData.startTime}} - {{rowData.endTime}}</td>
+            <td>{{rowData.checkinTime}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <!-- <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button class="btn btn-info">
+        Save
+      </button>
+      <button class="btn btn-info" (click)="visible = false">
+        Cancel
+      </button>
+    </div>
+  </p-footer> -->
+</p-dialog>

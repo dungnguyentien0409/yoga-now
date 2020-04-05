@@ -1,0 +1,53 @@
+:host .student-notes {
+    ::ng-deep .ui-table {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        
+        .ui-table-thead > tr > th {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &.header {
+                color: white;
+                background: #00bcd4;
+                font-weight: bold;
+                padding: 10px;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            input {
+                width: 100%;
+                height: 33px;
+            }
+        }
+
+        .ui-table-tbody > tr > td {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre;
+        }
+
+        .ui-paginator-bottom {
+            border: none;
+        }
+
+        .ui-sortable-column .ui-sortable-column-icon {
+            color: white;
+        }
+    }
+
+    ::ng-deep .ui-dialog-buttonpane  {
+        text-align: center;
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            text-transform: none;
+            min-width: 80px;
+        }
+    }
+}

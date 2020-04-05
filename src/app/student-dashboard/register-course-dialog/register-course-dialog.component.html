@@ -1,0 +1,34 @@
+<p-dialog class="student-register-course" header="Register course" [(visible)]="visible" [focusOnShow]="false" [responsive]="true"
+  showEffect="fade" [modal]="true" [style]="{width: '650px', 'max-height': '500px'}" [transitionOptions]="'0ms'"
+  [resizable]="false" [blockScroll]="true">
+  <div>
+    <div class="mb-3">Please select course: </div>
+    <p-table #dtCourses [value]="courses$ | async">
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr [style.background]="rowIndex % 2 === 0 ? 'rgba(218, 232, 239, 0.31)' : '#f9f9f9'">
+          <td [ngStyle]="{'width': '5%'}">
+            <p-radioButton name="groupCourses" value="{{rowData.id}}" [(ngModel)]="selectedCourse"></p-radioButton>
+          </td>
+          <td [ngStyle]="{'width': '30%'}">{{rowData.name}}</td>
+          <td class="text-center" [ngStyle]="{'width': '15%'}" *ngIf="rowData.isUnlimited">{{rowData.duration}} days</td>
+          <td class="text-center" [ngStyle]="{'width': '15%'}" *ngIf="!rowData.isUnlimited">{{rowData.noOfDays}} ps/{{rowData.duration}} days</td>
+          <td class="text-center" [ngStyle]="{'width': '15%'}">
+            <button class="btn btn-info font-weight-bold p-2" disabled>
+              {{rowData.price}}k
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button class="btn btn-info" (click)="save()" [disabled]="!this.selectedCourse">
+        Save
+      </button>
+      <button class="btn btn-info" (click)="visible = false">
+        Cancel
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>

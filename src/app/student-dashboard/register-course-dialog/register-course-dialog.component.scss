@@ -1,0 +1,43 @@
+:host .student-register-course {
+
+    ::ng-deep .ui-dialog-buttonpane  {
+        text-align: center;
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            text-transform: none;
+            min-width: 80px;
+        }
+    }
+
+    ::ng-deep .ui-table {
+        border-radius: 8px;
+        overflow: hidden;
+        
+        .ui-table-thead > tr > th {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .ui-table-tbody > tr > td {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre;
+        }
+
+        .btn {
+            padding: 5px;
+            border-radius: 50%;
+            margin: 5px;
+    
+            .material-icons {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        }
+    }
+}

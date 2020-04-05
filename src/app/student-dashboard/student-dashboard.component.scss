@@ -1,0 +1,91 @@
+:host {
+    ::ng-deep .ui-dialog .ui-dialog-footer .btn {
+        padding: 5px;
+
+        .material-icons {
+            margin: 0;
+            font-size: 24px;
+        }
+    }
+
+    ::ng-deep .ui-progress-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    ::ng-deep .ui-confirmdialog .ui-dialog-content .ui-confirmdialog-icon {
+        font-size: 30px;
+        color: red;
+    }
+}
+
+:host .student-dashboard {
+
+    .btn {
+        padding: 7px;
+        border-radius: 50%;
+        margin: 5px;
+
+        .material-icons {
+            margin: 0;
+            font-size: 28px;
+        }
+    }
+
+    .btn-action {
+        font-weight: bold;
+    }
+
+    ::ng-deep .ui-dropdown {
+        min-width: 55px;
+        width: 100%;
+    }
+
+    ::ng-deep .ui-table {
+
+        /* box-shadow: 5px 5px 8px -4px rgba(71,65,71,1); */
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        border-radius: 8px;
+        overflow: hidden;
+
+        .ui-table-thead > tr > th {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &.header {
+                color: white;
+                background: #00bcd4;
+                font-weight: bold;
+                padding: 10px;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            &.filters {
+                padding: 5px!important;
+            }
+
+            input {
+                width: 100%;
+                height: 33px;
+            }
+        }
+
+        .ui-table-tbody > tr > td {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .ui-sortable-column .ui-sortable-column-icon {
+            color: white;
+        }
+
+        .ui-paginator-bottom {
+            border: none;
+        }
+    }
+}

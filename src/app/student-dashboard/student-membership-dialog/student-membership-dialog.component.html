@@ -1,0 +1,75 @@
+<p-dialog class="student-membership" header="Membership" [(visible)]="visible" [focusOnShow]="false" [responsive]="true"
+  showEffect="fade" [modal]="true" [style]="{width: '680px', 'max-height': '500px'}" [transitionOptions]="'0ms'"
+  [resizable]="false" [blockScroll]="true">
+  <div class="mb-3" *ngIf="!showCalendar">
+    <div>Expire Date: <b>{{expireDate}}</b></div>
+    <div class="mb-3">Thepary Remain Days: <b>{{remainDates}}</b></div>
+    <p-table #dtTherapyDates [value]="therapyDates">
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr [style.background]="rowIndex % 2 === 0 ? 'rgba(218, 232, 239, 0.31)' : '#f9f9f9'">
+          <td [ngStyle]="{'width': '15%'}">{{ 'Date No.' + (rowIndex + 1)}}</td>
+          <td class="text-center status-panel" [ngStyle]="{'width': '25%'}">
+            <button *ngIf="rowData.status === 'None'" class="btn btn-outline-secondary" disabled>
+                None
+            </button>
+            <button *ngIf="rowData.status === 'Booked'" class="btn btn-info" disabled>
+                Booked
+            </button>
+            <button *ngIf="rowData.status === 'Done'" class="btn btn-success" disabled>
+                Done
+            </button>
+          </td>
+          <td class="text-center status-panel" [ngStyle]="{'width': '25%'}">
+            <!-- <div *ngIf="rowData.start">{{(new Date(rowData.start)).toLocaleDateString()}}</div>
+            <div *ngIf="rowData.start && rowData.end">{{rowData.start.toLocaleTimeString()}} - {{rowData.end.toLocaleTimeString()}}</div> -->
+            <div *ngIf="rowData.start">{{rowData.start | date:'mediumDate'}}</div>
+            <div *ngIf="rowData.start && rowData.end">
+              {{rowData.start | date:'shortTime'}} - {{rowData.end | date:'shortTime'}}
+            </div>
+          </td>
+          <td class="text-center action-panel">
+            <button *ngIf="rowData.status === 'None'" (click)="bookDate(rowData)"
+                class="btn btn-info" data-toggle="tooltip" title="Book date">
+                <i class="material-icons">bookmark</i>
+            </button>
+
+            <button *ngIf="rowData.status === 'Booked'" (click)="completeDate(rowData)"
+                class="btn btn-success" data-toggle="tooltip" title="Complete">
+                <i class="material-icons">done</i>
+            </button>
+
+            <button *ngIf="rowData.status === 'Booked'" (click)="bookDate(rowData)"
+                class="btn btn-info" data-toggle="tooltip" title="Change date">
+                <i class="material-icons">edit</i>
+            </button>
+
+            <button *ngIf="rowData.status === 'Booked'" (click)="cancelDate(rowData)"
+                class="btn btn-danger" data-toggle="tooltip" title="Cancel date">
+                <i class="material-icons">delete</i>
+            </button>
+
+            <button (click)="noteDate(rowData)"
+                class="btn btn-success" data-toggle="tooltip" title="Note">
+                <i class="material-icons">favorite</i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <app-scheduler-dashboard *ngIf="showCalendar" [events]="events"
+      (onCancel)="showCalendar = false"
+      (onSave)="saveBookDate($event)">
+  </app-scheduler-dashboard>
+  <app-overlay [isLoading]='isLoading'></app-overlay>
+  <!-- <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button class="btn btn-info">
+        Save
+      </button>
+      <button class="btn btn-info" (click)="visible = false">
+        Cancel
+      </button>
+    </div>
+  </p-footer> -->
+</p-dialog>

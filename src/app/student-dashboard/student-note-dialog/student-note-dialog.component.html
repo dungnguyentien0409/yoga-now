@@ -1,0 +1,45 @@
+<p-dialog class="student-notes" header="Notes" [(visible)]="visible" [focusOnShow]="false"
+  [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '650px', 'max-height': '500px'}"
+  [transitionOptions]="'0ms'" [resizable]="false" [blockScroll]="true">
+  <div class="form-group">
+    <label>Today's note</label>
+    <textarea type="text" class="form-control" pInputTextarea [rows]="3" [(ngModel)]="note.content"></textarea>
+  </div>
+  <p-table #dtNotes [columns]="noteCols" [value]="notes" sortMode="multiple" [paginator]="true" [rows]="3"
+    [scrollable]="true" scrollHeight="200px">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th class="header" *ngFor="let col of columns"  [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}">
+          {{col.header}}
+          <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="2" class="filters" [ngStyle]="{'height': '35px'}">
+          <input pInputText type="text" placeholder="Please enter keywords"
+            (input)="dtNotes.filter($event.target.value, 'content', 'contains')">
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button *ngIf="!note.id" class="btn btn-info" (click)="add()">
+        Save
+      </button>
+      <button *ngIf="note.id" class="btn btn-info" (click)="save()">
+        Save
+      </button>
+      <button class="btn btn-info" (click)="visible = false">
+        Cancel
+      </button>
+    </div>
+  </p-footer>
+</p-dialog>

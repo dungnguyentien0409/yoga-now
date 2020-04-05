@@ -1,0 +1,50 @@
+th > input {
+    width: 100%;
+    height: 33px;
+}
+
+:host ::ng-deep .ui-dropdown {
+    min-width: 55px;
+    width: 100%;
+}
+
+:host ::ng-deep th.filters {
+    padding: 5px!important;
+}
+
+:host ::ng-deep .ui-table .ui-table-thead > tr > th.header {
+    color: white;
+    background: #00bcd4;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    /* height: 40px!important; */
+}
+
+:host ::ng-deep .ui-table .ui-sortable-column .ui-sortable-column-icon {
+    color: white;
+}
+
+:host ::ng-deep .ui-paginator,
+:host ::ng-deep .ui-table .ui-table-thead > tr > th,
+:host ::ng-deep .ui-table .ui-table-tbody > tr > td {
+    border: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+:host ::ng-deep .ui-table{
+    /* box-shadow: 5px 5px 8px -4px rgba(71,65,71,1); */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn-action {
+    font-weight: bold;
+}
+
+:host ::ng-deep .ui-calendar .ui-inputtext {
+    width: 100%;
+}

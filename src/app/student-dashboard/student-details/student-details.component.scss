@@ -1,0 +1,57 @@
+:host .student-details-tabview {
+
+    ::ng-deep .ui-dropdown {
+        min-width: 55px;
+        width: 100%;
+    }
+
+    ::ng-deep .ui-calendar .ui-inputtext {
+        width: 100%;
+    }
+
+    ::ng-deep .ui-table {
+        border-radius: 8px;
+        overflow: hidden;
+        
+        .ui-table-thead > tr > th {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &.header {
+                color: white;
+                background: #00bcd4;
+                font-weight: bold;
+                padding: 10px;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            input {
+                width: 100%;
+                height: 33px;
+            }
+        }
+
+        .ui-table-tbody > tr > td {
+            border: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .ui-paginator-bottom {
+            border: none;
+        }
+    }
+}
+
+:host {
+    ::ng-deep .ui-dropdown {
+        min-width: 55px;
+        width: 100%;
+    }
+
+    ::ng-deep .ui-calendar .ui-inputtext {
+        width: 100%;
+    }
+}

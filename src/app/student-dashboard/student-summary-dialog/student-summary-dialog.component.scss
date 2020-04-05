@@ -1,0 +1,29 @@
+:host .student-summary {
+
+    ::ng-deep .ui-dropdown {
+        min-width: 55px;
+        width: 100%;
+    }
+
+    ::ng-deep .ui-calendar .ui-inputtext {
+        width: 100%;
+    }
+
+    ::ng-deep .ui-dialog-buttonpane  {
+        text-align: center;
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            text-transform: none;
+            min-width: 80px;
+        }
+    }
+
+    .invalid-feedbacks {
+        display: block!important;
+        margin-top: .25rem;
+        font-size: 90%;
+        color: #dc3545;
+    }
+}

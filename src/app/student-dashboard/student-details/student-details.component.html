@@ -1,0 +1,93 @@
+<!-- <p-tabView *ngIf="student" class="student-details-tabview">
+  <p-tabPanel header="Summary">
+    <div class="row">
+      <div class="form-group col-4"  *ngIf="student.id">
+        <label>Id</label>
+        <input type="text" class="form-control" pInputText [(ngModel)]="student.id" autofocus readonly />
+      </div>
+      <div class="form-group col-8">
+        <label>Fullname</label>
+        <input type="text" class="form-control" pInputText [(ngModel)]="student.fullname" autofocus />
+      </div>
+      <div class="form-group col-4">
+        <label>Birthday</label>
+        <p-calendar [(ngModel)]="student.birthday" appendTo='body'></p-calendar>
+      </div>
+      <div class="form-group col-5">
+        <label>Phone</label>
+        <input pKeyFilter="pint" type="text" class="form-control" pInputText [(ngModel)]="student.phone" autofocus />
+      </div>
+      <div class="form-group col-3">
+        <label>Gender</label>
+        <p-dropdown [(ngModel)]="student.gender" [autoWidth]="false" [options]="genders" placeholder="Select"></p-dropdown>
+      </div>
+      <div class="form-group col-12">
+          <label>Email</label>
+          <input type="text" class="form-control" pInputText [(ngModel)]="student.email" autofocus/>
+      </div>
+      <div class="form-group col-12">
+        <label>Address</label>
+        <input type="text" class="form-control" pInputText [(ngModel)]="student.address" autofocus />
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Health Notes" *ngIf="student.id">
+    <div class="form-group">
+      <label>Today's note</label>
+      <textarea type="text" class="form-control" pInputTextarea [rows]="3"></textarea>
+    </div>
+    <p-table #dtNotes [columns]="noteCols" [value]="student.notes" [paginator]="true" [rows]="3">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th class="header" *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+            {{col.header}}
+          </th>
+        </tr>
+        <tr>
+          <th colspan="2" class="filters" [ngStyle]="{'height': '35px'}">
+            <input pInputText type="text" placeholder="Please enter keywords"
+              (input)="dtNotes.filter($event.target.value, 'content', 'contains')">
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-tabPanel>
+</p-tabView> -->
+
+<div class="row"  *ngIf="student">
+  <div class="form-group col-4"  *ngIf="student.id">
+    <label>Id</label>
+    <input type="text" class="form-control" pInputText [(ngModel)]="student.id" autofocus readonly />
+  </div>
+  <div class="form-group col-8">
+    <label>Fullname</label>
+    <input type="text" class="form-control" pInputText [(ngModel)]="student.fullname" autofocus />
+  </div>
+  <div class="form-group col-4">
+    <label>Birthday</label>
+    <p-calendar [(ngModel)]="student.birthday" appendTo='body'></p-calendar>
+  </div>
+  <div class="form-group col-5">
+    <label>Phone</label>
+    <input pKeyFilter="pint" type="text" class="form-control" pInputText [(ngModel)]="student.phone" autofocus />
+  </div>
+  <div class="form-group col-3">
+    <label>Gender</label>
+    <p-dropdown [(ngModel)]="student.gender" [autoWidth]="false" [options]="genders" placeholder="Select"></p-dropdown>
+  </div>
+  <div class="form-group col-12">
+      <label>Email</label>
+      <input type="text" class="form-control" pInputText [(ngModel)]="student.email" autofocus/>
+  </div>
+  <div class="form-group col-12">
+    <label>Address</label>
+    <input type="text" class="form-control" pInputText [(ngModel)]="student.address" autofocus />
+  </div>
+</div>
