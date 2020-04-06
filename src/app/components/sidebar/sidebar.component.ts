@@ -12,7 +12,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/student-dashboard', title: 'Students', icon: 'person', class: '' },
   { path: '/course-dashboard', title: 'Courses', icon: 'content_paste', class: '' },
   { path: '/scheduler-dashboard', title: 'Time Table', icon: 'library_books', class: '' },
-  { path: '/register-dashboard', title: 'Register', icon: 'bubble_chart', class: '' }
+  { path: '/register-dashboard', title: 'Register', icon: 'bubble_chart', class: '' },
+  { path: '/products-dashboard', title: 'Products', icon: 'shopping_cart', class: '' }
 ];
 
 @Component({

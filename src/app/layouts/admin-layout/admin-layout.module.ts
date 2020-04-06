@@ -32,6 +32,7 @@ import { StudentDetailsComponent } from 'app/student-dashboard/student-details/s
 import { CourseDashboardComponent } from 'app/course-dashboard/course-dashboard.component';
 import { RegisterDashboardComponent } from 'app/register-dashboard/register-dashboard.component';
 import { SchedulerDashboardComponent } from 'app/scheduler-dashboard/scheduler-dashboard.component';
+import { ProductsDashboardComponent } from 'app/products-dashboard/products-dashboard.component';
 // import { FullCalendarModule } from '@fullcalendar/angular';
 import { FullCalendarModule } from 'primeng/fullcalendar';
 import { HttpClientModule } from '@angular/common/http';
@@ -95,6 +96,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     CourseDashboardComponent,
     RegisterDashboardComponent,
     SchedulerDashboardComponent,
+    ProductsDashboardComponent,
     OverlayComponent,
     StudentSummaryDialogComponent,
     SafeUrlPipe,

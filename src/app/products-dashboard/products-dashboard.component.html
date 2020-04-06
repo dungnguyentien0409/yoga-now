@@ -1,0 +1,103 @@
+<div #studentDashboard class="main-content student-dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+              <button class="btn-action mb-3" type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
+              <p-table #dt *ngIf="mode === 'Normal'"
+                  [columns]="cols" [value]="students$ | async" [paginator]="true" [rows]="10" sortMode="multiple" dataKey="id"
+                  selectionMode="single" [(selection)]="selectedStudent" (onRowSelect)="onRowSelect($event)">
+                  <ng-template pTemplate="header" let-columns>
+                      <tr>
+                          <th class="header" style="width: 3em"></th>
+                          <th class="header" *ngFor="let col of columns" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}">
+                              {{col.header}}
+                              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                          </th>
+                      </tr>
+                      <tr>
+                          <th class="filters" style="width: 3em"></th>
+                          <th class="filters" *ngFor="let col of columns" [ngSwitch]="col.field" [ngStyle]="{'height': '35px'}">
+                              <input *ngSwitchCase="'code'" 
+                                  pInputText type="text" 
+                                  (input)="dt.filter($event.target.value, col.field, 'contains')">
+  
+                              <input *ngSwitchCase="'fullname'" 
+                                  pInputText type="text" 
+                                  (input)="dt.filter($event.target.value, col.field, 'contains')">
+  
+                              <input *ngSwitchCase="'description'" 
+                                  pInputText type="text" 
+                                  (input)="dt.filter($event.target.value, col.field, 'contains')">
+  
+                              <input *ngSwitchCase="'price'" pKeyFilter="pint"
+                                  pInputText type="text" 
+                                  (input)="dt.filter($event.target.value, col.field, 'contains')">
+                                  
+                              <p-dropdown *ngSwitchCase="'gender'" 
+                                  [autoWidth]="false"
+                                  [options]="prices" 
+                                  (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                          </th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-rowData let-columns="columns">
+                      <tr [pSelectableRow]="rowData">
+                          <td>
+                              <a href="#/student-dashboard" [pRowToggler]="rowData">
+                                  <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                              </a>
+                          </td>
+                          <td *ngFor="let col of columns" [ngStyle]="{'text-align': !['fullname', 'address'].includes(col.field) ? 'center' : 'left'}">
+                              {{rowData[col.field]}}
+                          </td>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns" let-expanded="expanded">
+                      <tr>
+                          <td [attr.colspan]="columns.length + 1" class="text-center">
+                              <button class="btn btn-info" (click)="showDialogToEdit(rowData)" data-toggle="tooltip" title="Edit personal information">
+                                  <i class="material-icons">edit</i>
+                              </button>
+                              <button class="btn btn-info" (click)="showDialogToNote(rowData)" data-toggle="tooltip" title="Note health information">
+                                  <i class="material-icons">favorite</i>
+                              </button>
+                              <button class="btn btn-danger" (click)="deleteStudent(rowData)" data-toggle="tooltip" title="Delete student">
+                                  <i class="material-icons">delete</i>
+                              </button>
+  
+                              <a  *ngIf="!rowData.registeredFingerprint" 
+                                  [href]="'Yoga.FingerPrintApp:' + rowData.id | safeUrl"
+                                  (click)="registerFingerprint(rowData)" data-toggle="tooltip" title="Register fingerprint"
+                                  class="btn btn-outline-secondary">
+                                  <i class="material-icons">fingerprint</i>
+                              </a>
+                              <button *ngIf="rowData.registeredFingerprint" disabled
+                                  class="btn btn-success" data-toggle="tooltip" title="Registered fingerprint successfully">
+                                  <i class="material-icons">fingerprint</i>
+                              </button>
+  
+                              <button *ngIf="!rowData.registeredMembership"
+                                  class="btn btn-outline-secondary" (click)="registerMembership(rowData)" data-toggle="tooltip" title="Register Membership">
+                                  <i class="material-icons">grade</i>
+                              </button>
+                              <button *ngIf="rowData.registeredMembership"
+                                  class="btn btn-success" (click)="showDialogToViewMembershipInfo(rowData)" data-toggle="tooltip" title="View Membership. Expire Date: {{rowData.membershipExpire}}">
+                                  <i class="material-icons">grade</i>
+                              </button>
+  
+                              <button *ngIf="!rowData.registeredCourse"
+                                  class="btn btn-outline-secondary" (click)="showDialogToRegisterCourse(rowData)" data-toggle="tooltip" title="Register course">
+                                  <i class="material-icons">fitness_center</i>
+                              </button>
+                              <button *ngIf="rowData.registeredCourse"
+                                  class="btn btn-success" (click)="showDialogToViewCourseInfo(rowData)" data-toggle="tooltip" title="View course. Expire Date: {{rowData.courseExpire ? rowData.courseExpire : 'Not yet'}}">
+                                  <i class="material-icons">fitness_center</i>
+                              </button>
+                          </td>
+                      </tr>
+                  </ng-template>
+              </p-table>
+            </div>
+        </div>
+    </div>
+  </div>

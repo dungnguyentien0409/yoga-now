@@ -10,6 +10,7 @@ import { StudentDashBoardComponent } from 'app/student-dashboard/student-dashboa
 import { CourseDashboardComponent } from 'app/course-dashboard/course-dashboard.component';
 import { RegisterDashboardComponent } from 'app/register-dashboard/register-dashboard.component';
 import { SchedulerDashboardComponent } from 'app/scheduler-dashboard/scheduler-dashboard.component';
+import { ProductsDashboardComponent } from 'app/products-dashboard/products-dashboard.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -22,4 +23,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'course-dashboard',  component: CourseDashboardComponent },
     { path: 'register-dashboard',  component: RegisterDashboardComponent },
     { path: 'scheduler-dashboard',  component: SchedulerDashboardComponent },
+    { path: 'products-dashboard', component: ProductsDashboardComponent },
 ];
